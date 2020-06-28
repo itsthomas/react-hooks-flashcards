@@ -196,7 +196,8 @@ img {
 
     &__set {
       display: flex;
-      padding: 10px 20px;
+      min-width: 60px;
+      padding: 10px;
       border: 1px solid;
       cursor: pointer;
       margin-right: 10px;
