@@ -9,7 +9,7 @@ const DocList = () => {
   const [beginAfter, setBeginAfter] = useState(0);
   const [totalDoclNumbers, setTotalDoclNumbers] = useState(0);
   const [addButtonClickCount, setAddButtonClickCount] = useState(0);
-  const docLimit = 10;
+  const docLimit = 20;
 
   useEffect(() => {
     // This first query is only to find out the total number of data in our collection
