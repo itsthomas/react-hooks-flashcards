@@ -52,6 +52,11 @@ const DocList = () => {
 
     setTotalDoclNumbers(data.docs.length);
   };
+
+  // Adding a 0 before single digit number such as 1, 2, 3, etc.
+  const doubleDigit = (d) => {
+    return d < 10 ? '0' + d.toString() : d.toString();
+  };
   // Creating a pagination menu for our documents (100 documents per each menu)
   // See https://stackoverflow.com/questions/62499420/react-cloud-firestore-how-can-i-add-pagination-to-this-component/62500027#62500027
   const RenderDocumentMenu = () =>
@@ -65,7 +70,8 @@ const DocList = () => {
         const onClick = () => setBeginAfter(docLimit * i);
         return (
           <div key={i} className='document__set' onClick={onClick}>
-            {docLimit * i + 1} to {docLimit * i + docLimit}
+            {doubleDigit(docLimit * i + 1)} to{' '}
+            {doubleDigit(docLimit * i + docLimit)}
           </div>
         );
       });
