@@ -18,7 +18,7 @@ const UpdateCard = ({ card }) => {
     await db
       .collection('FlashCards')
       .doc(card.id)
-      .limit(1) // I added this aftr Fikir was finished
+      //.limit(1) // This will break the update function
       // .set or .update transfers new data to the FireBase DataBase (FlashCards collection)
       .update({ ...card, customId, originalText, translatedText, imgURL });
     // .set({ ...card, originalText, translatedText, imgURL });

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from '../firebase';
 
-const ImageUpload = ({ getURLtoParent }) => {
+const ImageUpload = ({ getURLtoParent, counter, setcounter }) => {
   const allInputs = { imgUrl: '' };
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
   const [image, setImage] = useState(null);
@@ -15,9 +15,17 @@ const ImageUpload = ({ getURLtoParent }) => {
   // Passing imageAsUrl.imgUrl to parent component (UpdateCard and AddCard)
   if (imageAsUrl.imgUrl) {
     getURLtoParent(imageAsUrl.imgUrl);
+    console.log('another');
   }
 
   useEffect(() => {
+    if (counter === 1) {
+      setImageAsUrl('');
+      setImage(null);
+      getURLtoParent('');
+      setcounter();
+    }
+    //setcounter();
     if (image) {
       const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
@@ -45,7 +53,7 @@ const ImageUpload = ({ getURLtoParent }) => {
         }
       );
     }
-  }, [image]);
+  }, [image, counter, getURLtoParent, setcounter]);
 
   return (
     <>

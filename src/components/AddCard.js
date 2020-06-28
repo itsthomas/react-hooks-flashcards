@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import ImageUpload from './ImageUpload';
 
@@ -6,6 +6,7 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
   const [newOriginalText, setNewOriginalText] = useState([]);
   const [newTranslatedText, setNewTranslatedText] = useState([]);
   const [imgURL, setimgURL] = useState('');
+  const [counter, setCounter] = useState(0);
   const nextNumber = totalDoclNumbers + 1;
 
   // Will also work  without async await.
@@ -18,8 +19,12 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
       customId: customIdentification,
     });
 
+    console.log(counter);
+    //console.log(imgURL);
+    //setNewOriginalText('');
     // pass the newly created card here so you could use it in `UpdateCard`
     onAddButtonClick(card); // this looks likes where it belongs.
+    setCounter(1);
   };
 
   return (
@@ -43,7 +48,11 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
               onChange={(e) => setNewOriginalText(e.target.value)}
             />
           )}
-          <ImageUpload getURLtoParent={(url) => setimgURL(url)} />
+          <ImageUpload
+            getURLtoParent={(url) => setimgURL(url)}
+            counter={counter}
+            setcounter={() => setCounter(0)}
+          />
         </div>
         <textarea
           placeholder='Translation'
