@@ -265,7 +265,6 @@ img {
     transition: transform 1s;
     transform-style: preserve-3d;
     margin-bottom: 15px;
-    cursor: pointer;
     font-size: 1.2rem;
   }
 
@@ -286,6 +285,7 @@ img {
   .card__face--front {
     background: #fff;
     border-color: rgb(240, 193, 107);
+    cursor: pointer;
   }
 
   .card__face--front img {
@@ -297,6 +297,7 @@ img {
     background: rgb(186, 186, 247);
     border-color: rgb(47, 83, 160);
     transform: rotateY(180deg);
+    cursor: pointer;
   }
 
   .card.is-flipped {
@@ -319,6 +320,10 @@ img {
       border-radius: 15px;
       outline: none;
       cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
