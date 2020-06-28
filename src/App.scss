@@ -246,9 +246,14 @@ img {
     margin-bottom: 30px;
 
     &--list {
-      width: 30%;
+      width: 100%;
       padding: 0 20px;
       box-sizing: border-box;
+
+      /* iPhone 6, 7, 8 ----------- */
+      @media only screen and (min-device-width: 375px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
+        width: 30%;
+      }
     }
   }
 
