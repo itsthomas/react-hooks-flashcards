@@ -24,6 +24,7 @@ function App() {
                 <li className='header__nav-list'>Cards</li>
               </NavLink>
             </ul>
+
             <h1 className='header__title'>English - German Vocabulary</h1>
           </header>
           <div className='home'>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
+import FlipCard from './FlipCard';
 
-const FlipCard = ({ startPoint, endPoint }) => {
+const AllFlipCards = () => {
   const [cards, setCards] = useState([]);
-  const [back, setBack] = useState(false);
   // console.log(cards);
 
   useEffect(() => {
@@ -23,27 +23,10 @@ const FlipCard = ({ startPoint, endPoint }) => {
   return (
     <>
       {cards.map((card) => (
-        <div key={card.id} className={'scene scene--list visible'}>
-          <div
-            className={back ? 'card is-flipped' : 'card'}
-            onClick={() => setBack(!back)}
-          >
-            <div className='card__face card__face--front'>
-              <div className='custom-id'>{card.customId}</div>
-              {card.imgURL ? (
-                <img src={card.imgURL} alt='' />
-              ) : (
-                card.originalText
-              )}
-            </div>
-            <div className='card__face card__face--back'>
-              {card.translatedText}
-            </div>
-          </div>
-        </div>
+       <FlipCard key={card.id} card={card}/>
       ))}
     </>
   );
 };
 
-export default FlipCard;
+export default AllFlipCards;

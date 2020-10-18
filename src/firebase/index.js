@@ -4,13 +4,13 @@ import 'firebase/storage';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FLASHCARDS_API_KEY,
-  authDomain: 'react-apps-e06b2.firebaseapp.com',
-  databaseURL: 'https://react-apps-e06b2.firebaseio.com',
-  projectId: 'react-apps-e06b2',
-  storageBucket: 'react-apps-e06b2.appspot.com',
-  messagingSenderId: '422301719317',
-  appId: '1:422301719317:web:d3ef3d01bb39c849fd271c',
+  apiKey: "AIzaSyAehGfPEzYsIlAcS3HWwjxgxzoPB29HtS4",
+  authDomain: "react-apps-e06b2.firebaseapp.com",
+  databaseURL: "https://react-apps-e06b2.firebaseio.com",
+  projectId: "react-apps-e06b2",
+  storageBucket: "react-apps-e06b2.appspot.com",
+  messagingSenderId: "422301719317",
+  appId: "1:422301719317:web:f739e6fddc9a718ffd271c"
 };
 
 firebase.initializeApp(firebaseConfig);
