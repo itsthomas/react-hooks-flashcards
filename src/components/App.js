@@ -43,6 +43,15 @@ function App() {
       <Router>
         <div className='App'>
           <header className='header'>
+            <LogoutButton handleLogout={handleLogout}/>
+            <h1 className='header__title'>English - German Vocabulary</h1>
+            <div className='home'>
+            <p>
+              Click on <strong>List</strong> in order to add, update or delete
+              vocabularies.
+              Click on <strong>Cards</strong> to test you vocabulary.
+            </p>
+          </div>
             <ul className='header__nav'>
               <NavLink exact={true} className='header__nav-link' to='/'>
                 <li className='header__nav-list'>List</li>
@@ -51,19 +60,8 @@ function App() {
                 <li className='header__nav-list'>Cards</li>
               </NavLink>
             </ul>
-            <h1 className='header__title'>English - German Vocabulary</h1>
-            <LogoutButton handleLogout={handleLogout}/>
           </header>
 
-          <div className='home'>
-            <p>
-              Click on <strong>List</strong> in order to add, update or remove
-              vocabularies.
-            </p>
-            <p>
-              Click on <strong>Cards</strong> to test you vocabulary.
-            </p>
-          </div>
           <div>
             <Switch>
               <Route exact path='/' component={DocList} />
