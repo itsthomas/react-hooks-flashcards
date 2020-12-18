@@ -33,7 +33,7 @@ const CardGroups = () => {
       // .get all data from our FireBase collection and save them in to const data
       const data = await db
         .collection('FlashCards')
-        .orderBy('customId', 'asc') // or you could use 'desc'
+        .orderBy('createdAt', 'asc') // or you could use 'desc'
         .limit(1)
         .get();
       // Save firebase db data in cards using the setCards method

@@ -1,8 +1,9 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/auth';
 
-// Firebase configuration
+//Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAehGfPEzYsIlAcS3HWwjxgxzoPB29HtS4",
   authDomain: "react-apps-e06b2.firebaseapp.com",
@@ -13,8 +14,8 @@ const firebaseConfig = {
   appId: "1:422301719317:web:f739e6fddc9a718ffd271c"
 };
 
-firebase.initializeApp(firebaseConfig);
+const fireAuth = firebase.initializeApp(firebaseConfig); // needed for Authentification
 const storage = firebase.storage(); // for uploading images
-const db = firebase.firestore(); // for stings and numbers saved in database
+const db = firebase.firestore(); // for saving strings and numbers in database
 
-export { storage, db, firebase as default };
+export { fireAuth, storage, db , firebase};

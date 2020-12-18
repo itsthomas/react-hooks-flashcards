@@ -8,11 +8,15 @@ import Swal from 'sweetalert2';
 const DeleteCard = ({ card, fetchDataByCustomId }) => {
   // Will also work  without async await.
   const onDelete = () => {
-    db.collection('FlashCards').doc(card.id).delete();
+    db.collection('FlashCards').doc(card.id).delete().then(function() {
+         // fetch to get updated results from the FireStore collection after deleting a doc
+          // This function also triggers a rendering of DockList
+        fetchDataByCustomId();
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
 
-    // fetch to get updated results from the FireStore collection after deleting a doc
-    // This function also triggers a rendering of DockList
-    fetchDataByCustomId();
+
   };
 
   // Showing the item to be delete in the Alert

@@ -12,7 +12,7 @@ const AllFlipCards = () => {
       // .get all data from our FireBase collection and save them in to const data
       const data = await db
         .collection('FlashCards')
-        .orderBy('customId', 'asc') // or you could use 'desc'
+        .orderBy('createdAt', 'asc') // or you could use 'desc'
         .get();
       // Save firebase db data in cards object using the setCards method
       setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

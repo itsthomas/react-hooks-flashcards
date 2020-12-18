@@ -16,7 +16,7 @@ const FlipCardSwipe = ({ startPoint, endPoint, setShowCardGroups, setShowFlipCar
     
       const data = await db
         .collection('FlashCards')
-        .orderBy('customId', 'asc') // or you could use 'desc'
+        .orderBy('createdAt', 'asc') // or you could use 'desc'
         .startAfter(startPoint)
         .limit(1)
         .get();
@@ -40,7 +40,7 @@ const FlipCardSwipe = ({ startPoint, endPoint, setShowCardGroups, setShowFlipCar
     const fetchNextData = async () => {
       const data = await db
         .collection('FlashCards')
-        .orderBy('customId', 'asc') // or you could use 'desc'
+        .orderBy('createdAt', 'asc') // or you could use 'desc'
         .startAfter(card.customId)
         .limit(1)
         .get()

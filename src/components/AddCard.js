@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { db } from '../firebase';
+import { db, firebase } from '../firebase';
 import ImageUpload from './ImageUpload';
 
 const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
@@ -11,12 +11,13 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
 
   // Will also work  without async await.
   const onAdd = async () => {
-    let customIdentification = Number(nextNumber);
+    //let customIdentification = Number(nextNumber);
     let card = await db.collection('FlashCards').add({
       originalText: newOriginalText,
       translatedText: newTranslatedText,
       imgURL: imgURL,
-      customId: customIdentification,
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date())
+     // customId: customIdentification,
     });
 
     console.log(counter);
@@ -36,7 +37,7 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
         <input
           type='text'
           className='list__input'
-          // readOnly
+          readOnly={true}
           defaultValue={nextNumber}
         />
         <div className='list__textarea-wrapper'>

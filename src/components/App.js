@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useCallback, useEffect }from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -7,12 +7,39 @@ import {
 } from 'react-router-dom';
 import DocList from './DocList';
 import CardGroups from './CardGroups';
-
+import Auth from './Auth';
+import LogoutButton from './Auth/LogoutButton';
+import {fireAuth} from '../firebase';
 import '../App.scss';
 
 function App() {
+  const [user, setUser] = useState('');
+
+  const onceUserUpdated = useCallback((user) => {
+    setUser(user);
+  }, []);
+
+  const handleLogout = () => {
+    fireAuth.auth().signOut();
+  }
+  
+  const authListener = () => {
+    fireAuth.auth().onAuthStateChanged(user => {
+      if(user){
+        setUser(user);
+      } else {
+        setUser('')
+      }
+    })
+  }
+
+  useEffect(() => {
+    authListener()
+  }, [])
+
+
   return (
-    <>
+     (user !=='' ? (
       <Router>
         <div className='App'>
           <header className='header'>
@@ -24,9 +51,10 @@ function App() {
                 <li className='header__nav-list'>Cards</li>
               </NavLink>
             </ul>
-
             <h1 className='header__title'>English - German Vocabulary</h1>
+            <LogoutButton handleLogout={handleLogout}/>
           </header>
+
           <div className='home'>
             <p>
               Click on <strong>List</strong> in order to add, update or remove
@@ -44,7 +72,10 @@ function App() {
           </div>
         </div>
       </Router>
-    </>
+    ): (
+      <Auth onceUserUpdated={onceUserUpdated} />
+    ) )
+    
   );
 }
 
