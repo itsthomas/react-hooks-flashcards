@@ -11,13 +11,11 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
 
   // Will also work  without async await.
   const onAdd = async () => {
-    //let customIdentification = Number(nextNumber);
     let card = await db.collection('FlashCards').add({
       originalText: newOriginalText,
       translatedText: newTranslatedText,
       imgURL: imgURL,
       createdAt: firebase.firestore.Timestamp.fromDate(new Date())
-     // customId: customIdentification,
     });
 
     console.log(counter);

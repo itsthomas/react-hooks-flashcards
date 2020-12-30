@@ -5,13 +5,13 @@ import Swal from 'sweetalert2';
 
 // card is the prop coming from List.js
 // We use distructuring for the card to access its propeties such as card.id
-const DeleteCard = ({ card, fetchDataByCustomId }) => {
+const DeleteCard = ({ card, fetchData }) => {
   // Will also work  without async await.
   const onDelete = () => {
     db.collection('FlashCards').doc(card.id).delete().then(function() {
          // fetch to get updated results from the FireStore collection after deleting a doc
-          // This function also triggers a rendering of DockList
-        fetchDataByCustomId();
+        // This function also triggers a rendering of DockList
+        fetchData();
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });

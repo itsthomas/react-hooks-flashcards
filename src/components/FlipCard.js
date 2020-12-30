@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TextToSpeech from './TextToSpeech';
 
-const FlipCard = ({ card }) => {
+const FlipCard = ({ card , number}) => {
   // const card = props.card;
   const [back, setBack] = useState(false);
 
@@ -26,7 +26,7 @@ const FlipCard = ({ card }) => {
             ) : (
               ''
             )}
-            {!back ? <div className='custom-id'>{card.customId}</div> : ''}
+            {!back ? <div className='custom-id'>{number}</div> : ''}
             {card.imgURL ? <img src={card.imgURL} alt='' /> : card.originalText}
           </div>
           <div className='card__face card__face--back'>

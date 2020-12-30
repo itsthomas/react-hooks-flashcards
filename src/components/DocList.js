@@ -14,6 +14,7 @@ const DocList = () => {
 
     useEffect(() => {
       const fetchData = async () => {
+        
           // FlashCards is the namee of our collection on FireBase server
           // .get all data from our FireBase collection and save them in to const data
           const flashCards = db.collection('FlashCards');
@@ -23,27 +24,48 @@ const DocList = () => {
             const numberOfPages = Math.ceil(_totalDoclNumbers / docLimit);
             const maxIndex = numberOfPages > 0 ? numberOfPages - 1 : 0;
 
-            db
-              .collection('FlashCards')
-              .orderBy('createdAt', 'asc') // or you could use 'desc'
-              .limit(docLimit)
-              .startAfter(beginAfter !== -1 ? beginAfter : (maxIndex * docLimit))
-              .get().then(function (documentSnapshots) {
-                  // Save firebase db data in cards using the setCards method
-                  setCards(documentSnapshots.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            var first = db.collection("FlashCards")
+            .orderBy("createdAt");
 
-                  setTotalDoclNumbers(_totalDoclNumbers);
+            if(beginAfter !== 0){
+              first = first.limit(beginAfter !== -1 ? beginAfter : (maxIndex * docLimit));
+            }
+            
+    
+          first.get().then(function (documentSnapshots) {
+            // Get the last visible document
+            var lastVisible = documentSnapshots.docs[documentSnapshots.docs.length-1];
+    
+            // Construct a new query starting at this document,
+            // get the next 25 cities.
+            var next = db.collection("FlashCards")
+                    .orderBy("createdAt")
+                    .limit(docLimit);
 
-                  let i = _totalDoclNumbers / docLimit;
-                  let lastBlock = docLimit * (i - 1);
-                  if (beginAfter >= lastBlock || beginAfter === -1) {
-                      setAddCardVisibility(true);
+                    if(beginAfter !== 0) {
+                      next = next.startAfter(lastVisible);
+                    }
+                    
+                    next.get().then(function (documentSnapshots) {
+                      // Save firebase db data in cards using the setCards method
+                      setCards(documentSnapshots.docs.map((doc) => ({...doc.data(), id: doc.id})));
+                      setTotalDoclNumbers(_totalDoclNumbers);
+    
+                      console.log(beginAfter)
+    
+                      let i = _totalDoclNumbers / docLimit;
+                      let lastBlock = docLimit * (i - 1);
+                      if (beginAfter >= lastBlock || beginAfter === -1) {
+                          setAddCardVisibility(true);
+                      }
+                      else {
+                          setAddCardVisibility(false);
+                      }
                   }
-                  else {
-                      setAddCardVisibility(false);
-                  }
-              }
-            );
+                );
+          });
+    
+    
           });
       };
 
@@ -53,19 +75,20 @@ const DocList = () => {
     }, [beginAfter, totalDoclNumbers]);
 
     // Extra fetch to get updates results from the FireStore collection after deleting a doc
-    const fetchDataByCustomId = async () => {
-        const data = await db
-            .collection('FlashCards')
+    const fetchData = async () => {
+        db.collection('FlashCards')
             .orderBy('createdAt', 'asc') // or you could use 'desc'
             .limit(docLimit)
             .startAfter(beginAfter)
-            .get();
-        // Save firebase db data in cards using the setCards method
-        setCards(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            .get().then((data)=> {
+                // Save firebase db data in cards using the setCards method
+                setCards(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
 
-        setTotalDoclNumbers(data.docs.length);
+                setTotalDoclNumbers(data.docs.length);
 
-        console.log(data.docs.length)
+                console.log(data.docs.length)
+            });
+ 
     };
 
     // Adding a 0 before single digit number such as 1, 2, 3, etc.
@@ -104,7 +127,7 @@ const DocList = () => {
               onAddButtonClick={(card) => {
                 setAddButtonClickCount((c) => c + 1);
 
-                fetchDataByCustomId();
+                fetchData();
                 console.log(cards);
               }}
           />
@@ -126,9 +149,10 @@ const DocList = () => {
 
         <ul className='list'>
           {cards.map((card, i) => (
-            <li key={card.id} className={'list__item '} data-id={card.id}>
-              <UpdateCard number={(beginAfter === -1 ? beginAfterForLastPage() +i+1:beginAfter + i+1 )} card={card} addButtonClickCount={addButtonClickCount}/>
-              <DeleteCard card={card} fetchDataByCustomId={fetchDataByCustomId}/>
+        
+            <li key={card.id} className={'list__item'} data-id={card.id}>
+              <UpdateCard key={'update-card-'+card.id} number={(beginAfter === -1 ? beginAfterForLastPage() +i+1:beginAfter + i+1 )} card={card} addButtonClickCount={addButtonClickCount}/>
+              <DeleteCard key={'delete-card-'+card.id} card={card} fetchData={fetchData}/>
             </li>
           ))}
           {checkLastDock()}
