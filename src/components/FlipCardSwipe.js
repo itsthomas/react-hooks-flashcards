@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FlipCard from './FlipCard';
+//import timeOutScroll from '../helpers/timeOutScroll';
 
 const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowFlipCardSwipe, goThroughAllCards, setStartPoint}) => {
   const [card, setCard] = useState({});
@@ -10,31 +11,39 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
   useEffect(() => {
     const fetchData = async () => {
 
-      setCard({ ...cards[startPoint], id: cards[startPoint].id, cardsArrayIndex: startPoint });
-      setCardNumber(startPoint+1);
+      if(cards.length > 0) {
+        setCard({ ...cards[startPoint], id: cards[startPoint].id, cardsArrayIndex: startPoint });
+        setCardNumber(startPoint + 1);
 
         //Hide CardGroups
         setShowCardGroups(false);
 
         //Show FlipCardSwipe
         setShowFlipCardSwipe(true);
+      } else {
+
+         //Hide FlipCardSwipe
+         setShowFlipCardSwipe(false);
+
+      }
+        
     };
 
-    if(startPoint>-1) {
-      fetchData();
-    }
+    if(startPoint > -1)
+        fetchData();
 
-  }, [startPoint,setShowFlipCardSwipe,setShowCardGroups, cards]);
+  }, [startPoint, setShowFlipCardSwipe, setShowCardGroups, cards]);
 
   // Function for Show next button
   const showNext = ({ card }) => {
-    console.log(card)
+    
     const fetchNextData = () => {
       if(card.id !== null) {
       
         // If there are no more data in the document, setFinished to true
         // This will hide the next button and shows "Start again" button instead
-        if (card.cardsArrayIndex+2 === endPoint) {
+  
+        if (card.cardsArrayIndex + 2 === endPoint) {
           console.log('end of the row');
           setFinished(true);
         }
@@ -47,6 +56,7 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
 
         // If there are no more data in the document, setFinished to true
         // This will hide the next button and shows "Start again" button instead
+
         if (card.cardsArrayIndex+2 === endPoint) {
           console.log('end of the row');
           setFinished(true);
@@ -55,25 +65,31 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
         // Save firebase db data in cards using the setCards method
         setCard({ ...cards[0], id: cards[0].id, cardsArrayIndex: startPoint + 1 });
         setCardNumber(startPoint + 1);
+   
       }
       
+
     };
 
     fetchNextData();
+
   };
+
 
   const startAgain = () => {
     setFinished(false);
     setStartPoint(-1);
 
-    if(goThroughAllCards) {
+    if(goThroughAllCards){
+
       setShowCardGroups(false);
       setShowFlipCardSwipe(true);
       showNext({ card: {id:null} });
-    } else {
+    }else {
       setShowCardGroups(true);
       setShowFlipCardSwipe(false);
     }
+
 
   }
 

@@ -22,7 +22,8 @@ function App() {
   const handleLogout = () => {
     fireAuth.auth().signOut();
   }
-  
+
+ 
   const authListener = () => {
     fireAuth.auth().onAuthStateChanged(user => {
       if(user){
@@ -39,10 +40,10 @@ function App() {
 
 
   return (
-     (user !=='' ? (
+     (user !== '' ? (
       <Router>
         <div className='App'>
-          <header className='header'>
+          <header className='header'> 
             <LogoutButton handleLogout={handleLogout}/>
             <h1 className='header__title'>English - German Vocabulary</h1>
             <div className='home'>
