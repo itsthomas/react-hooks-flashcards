@@ -5,14 +5,14 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.0",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.1",
     "localtunnel": "^2.0.1",
-    "node-sass": "4.14.1",
+    "node-sass": "5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1"
+    "react-scripts": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,7 +36,7 @@
     ]
   },
   "devDependencies": {
-    "firebase": "^8.2.2",
+    "firebase": "^8.2.8",
     "sweetalert2-react": "^0.8.3"
   }
 }
