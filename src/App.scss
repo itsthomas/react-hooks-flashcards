@@ -5,10 +5,6 @@ ul {
   padding: 0;
 }
 
-img {
-  height: 85px;
-}
-
 .success {
   color: rgb(13, 133, 13);
 }
@@ -147,9 +143,14 @@ img {
     flex-direction: column;
     position: relative;
     width: 39%;
-    // height: 90px;
     background-color: #fff;
     border-left: 1px solid;
+
+    img {
+      max-width: 80px;
+      height: auto;
+      border-radius: 10px;
+    }
 
     .list__textarea {
       width: 90%;
