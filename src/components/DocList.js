@@ -160,7 +160,7 @@ const DocList = () => {
               const documentMenuIsSelected = beginAfter === docLimit * i || (beginAfter===-1 && i===Math.ceil(totalDoclNumbers / docLimit)-1);
 
               return (
-                <div key={i} className={ documentMenuIsSelected ? 'document__set selected' : 'document__set' } onClick={onClick}>
+                <div key={i} className={ documentMenuIsSelected ? 'nav__set selected' : 'nav__set' } onClick={onClick}>
                   {doubleDigit(docLimit * i + 1)} to {' '}
                   {doubleDigit(docLimit * i + docLimit)}
                 </div>
@@ -191,7 +191,7 @@ const DocList = () => {
 
     return (
         <>
-        <div className='document'>
+        <div className='nav'>
           <RenderDocumentMenu/>
         </div>
 

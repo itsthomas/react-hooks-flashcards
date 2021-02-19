@@ -4,6 +4,7 @@ import ImageUpload from './ImageUpload';
 
 const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
   const [newOriginalText, setNewOriginalText] = useState([]);
+  const [newSynonym, setNewSynonym] = useState([]);
   const [newTranslatedText, setNewTranslatedText] = useState([]);
   const [imgURL, setimgURL] = useState('');
   const [counter, setCounter] = useState(0);
@@ -13,6 +14,7 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
   const onAdd = async () => {
     let card = await db.collection('FlashCards').add({
       originalText: newOriginalText,
+      synonym: newSynonym,
       translatedText: newTranslatedText,
       imgURL: imgURL,
       createdAt: firebase.firestore.Timestamp.fromDate(new Date())
@@ -42,10 +44,18 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
           {imgURL ? (
             <img src={imgURL} alt='' className='img' />
           ) : (
+            <>
             <textarea
+              className='list__textarea--original'
               placeholder='English'
               onChange={(e) => setNewOriginalText(e.target.value)}
             />
+            <textarea
+              className='list__textarea'
+              placeholder='Synonym'
+              onChange={(e) => setNewSynonym(e.target.value)}
+            />
+            </>
           )}
           <ImageUpload
             getURLtoParent={(url) => setimgURL(url)}
@@ -53,10 +63,13 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
             setcounter={() => setCounter(0)}
           />
         </div>
-        <textarea
-          placeholder='Translation'
-          onChange={(e) => setNewTranslatedText(e.target.value)}
-        />
+        <div className='list__textarea-wrapper'>
+          <textarea
+            className='list__textarea'
+            placeholder='Translation'
+            onChange={(e) => setNewTranslatedText(e.target.value)}
+          />
+        </div>
         <button className='list__btn list__btn--add' onClick={onAdd}>
           Add
         </button>

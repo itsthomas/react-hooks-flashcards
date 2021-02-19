@@ -6,6 +6,7 @@ import ImageUpload from './ImageUpload';
 // We use distructuring for the card to access its propeties such as card.id
 const UpdateCard = ({ card, number }) => {
   const [originalText, setOriginalText] = useState(card.originalText);
+  const [synonym, setSynonym] = useState(card.synonym);
   const [translatedText, setTranslatedText] = useState(card.translatedText);
   const [imgURL, setimgURL] = useState(card.imgURL);
   //console.log(card.id);
@@ -19,7 +20,7 @@ const UpdateCard = ({ card, number }) => {
       .doc(card.id)
       //.limit(1) // This will break the update function
       // .set or .update transfers new data to the FireBase DataBase (FlashCards collection)
-      .update({ ...card, originalText, translatedText, imgURL });
+      .update({ ...card, originalText, synonym, translatedText, imgURL });
     // .set({ ...card, originalText, translatedText, imgURL });
   };
 
@@ -36,12 +37,22 @@ const UpdateCard = ({ card, number }) => {
         {imgURL ? (
           <img src={imgURL} alt='' className='img' />
         ) : (
+          <>
           <textarea
+            className='list__textarea--original'
             value={originalText}
             onChange={(e) => {
               setOriginalText(e.target.value);
             }}
           />
+          <textarea
+            className='list__textarea--synonym'
+            value={synonym}
+            onChange={(e) => {
+              setSynonym(e.target.value);
+            }}
+          />
+          </>
         )}
         <ImageUpload
           getURLtoParent={(url) => {
@@ -51,12 +62,15 @@ const UpdateCard = ({ card, number }) => {
         />
       </div>
 
-      <textarea
-        value={translatedText}
-        onChange={(e) => {
-          setTranslatedText(e.target.value);
-        }}
-      />
+      <div className='list__textarea-wrapper'>
+        <textarea
+          className='list__textarea'
+          value={translatedText}
+          onChange={(e) => {
+            setTranslatedText(e.target.value);
+          }}
+        />
+      </div>
       <button className='list__btn list__btn--update' onClick={onUpdate}>
         Update
       </button>
