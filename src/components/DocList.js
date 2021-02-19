@@ -12,7 +12,7 @@ const DocList = () => {
     const [totalDoclNumbers, setTotalDoclNumbers] = useState(0);
     const [addButtonClickCount, setAddButtonClickCount] = useState(0);
     // const [searchQuery, setSearchQuery] = useState("");
-    const docLimit = 5;
+    const docLimit = 10;
 
     useEffect(() => {
       const fetchData = async () => {
