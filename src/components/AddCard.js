@@ -51,7 +51,7 @@ const AddCard = ({ totalDoclNumbers, onAddButtonClick }) => {
               onChange={(e) => setNewOriginalText(e.target.value)}
             />
             <textarea
-              className='list__textarea'
+              className='list__textarea--synonym'
               placeholder='Synonym'
               onChange={(e) => setNewSynonym(e.target.value)}
             />
