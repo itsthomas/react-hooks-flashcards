@@ -147,7 +147,7 @@ ul {
     border-left: 1px solid;
 
     img {
-      max-width: 80px;
+      max-width: 100px;
       height: auto;
       border-radius: 10px;
     }
@@ -439,10 +439,13 @@ ul {
   SweetAlert2 React extension
   Its styling should be outside of.App
 ======================================= */
+#swal2-content {
+  display: flex !important;
+  flex-direction: column;
+}
+
 .swal2-content #swal2-content img {
   height: 100px;
-  position: relative;
-  top: 10px;
 }
 
 /* =========================================
