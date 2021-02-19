@@ -13,7 +13,7 @@ const CardGroups = () => {
   const [showAllFlipCard, setShowAllFlipCards] = useState(false);
   const [showCardGroups, setShowCardGroups] = useState(true);
 
-  const docLimit = 5;
+  const docLimit = 10;
 
   // console.log(cards);
 
