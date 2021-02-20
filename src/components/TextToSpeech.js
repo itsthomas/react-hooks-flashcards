@@ -1,11 +1,5 @@
 import React from 'react';
 
-// const TextToSpeech = (props) => {
-//   const message = props.message;
-//   const language = props.language;
-//   const rate = props.rate;
-//   const pitch = props.pitch;
-
 // Destructuring
 const TextToSpeech = ({ message, language, rate, pitch }) => {
   return (
