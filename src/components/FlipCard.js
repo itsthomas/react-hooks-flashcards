@@ -19,7 +19,7 @@ const FlipCard = ({ card , number}) => {
                 message={card.originalText}
                 language={'en-GB'}
                 pitch={1}
-                rate={0.7}
+                rate={0.8}
               />
             ) : (
               ''
@@ -32,7 +32,7 @@ const FlipCard = ({ card , number}) => {
               message={card.translatedText}
               language={backLang}
               pitch={1}
-              rate={0.7}
+              rate={0.8}
             />
             {card.translatedText}
             {card.synonym != '' ? 
