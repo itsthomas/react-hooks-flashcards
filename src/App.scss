@@ -21,16 +21,9 @@ ul {
   margin: 15px 0 50px;
   margin-bottom: 200px;
 
-  .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .greeting {
     text-align: center;
-
-    p {
-      margin-bottom: 0;
-    }
+    margin-bottom: 20px;
   }
 
   .header {
@@ -38,24 +31,18 @@ ul {
     flex-direction: column;
     align-items: center;
 
-    h1 {
-      margin-bottom: 10px;
+    &__title {
       color: #3071ab;
+      text-align: center;
     }
 
     &__nav {
       display: flex;
-
-      &-list {
-        display: flex;
-        justify-content: center;
-        width: 160px;
-        padding: 10px;
-        border: 1px solid #222725;
-        cursor: pointer;
-      }
+      width: 100%;
+      margin: 0;
 
       &-link {
+        width: 50%;
         text-decoration: none;
         color: #222725;
 
@@ -63,12 +50,16 @@ ul {
           color: green;
         }
       }
+
+      &-list {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        border: 1px solid #222725;
+        cursor: pointer;
+      }
     }
 
-    &__title {
-      text-align: center;
-      margin: 30px auto;
-    }
   }
 
   ul.list {
@@ -196,10 +187,8 @@ ul {
       display: flex;
       min-width: 60px;
       padding: 10px;
-      margin-bottom: 10px;
       border: 1px solid;
       cursor: pointer;
-      margin-right: 10px;
       text-align: center;
       justify-content: center;
       align-items: center;
@@ -231,61 +220,57 @@ ul {
     cursor: pointer;
   }
 
-  /* ========================================
+/* ========================================
                  FlipCard
 ========================================== */
+  main {
+    margin: 20px 0;
+  }
+
   .scene {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     height: 300px;
-    perspective: 600px;
+    // perspective: 600px;
     margin-bottom: 20px;
 
     &-group {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      width: 100%;
       height: 150px;
-      perspective: 600px;
+      // perspective: 600px;
       margin-bottom: 20px;
 
       &--list {
-        width: 12.5%;
+        width: 48%;
         float: left;
-        padding: 0 20px;
+        padding: 0;
         box-sizing: border-box;
         cursor: pointer;
       }
+
+      @media only screen and (min-width: 768px) {
+        width: 23%;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        width: 18%;
+      }
+
+      @media only screen and (min-width: 1440px) {
+        width: 11%;
+      }
+
     }
 
-    &--list {
-      width: 25%;
-      float: left;
-      padding: 0 20px;
-      box-sizing: border-box;
-      cursor: pointer;
-
-      @media only screen and (max-width: 1280px) {
-        width: 33.33%;
-      }
-
-      @media only screen and (max-width: 991px) {
-        width: 50%;
-      }
-
-      @media only screen and (max-width: 600px) {
-        width: 100%;
-      }
-    }
   }
 
   .card {
     display: flex;
     width: 300px;
-    height: 100%;
     position: relative;
     transition: transform 1s;
     transform-style: preserve-3d;
@@ -295,7 +280,8 @@ ul {
 
     &-group {
       display: flex;
-      width: 150px;
+      width: 100%;
+      height: 100%;
       position: relative;
       transition: transform 1s;
       transform-style: preserve-3d;
@@ -327,8 +313,7 @@ ul {
   }
 
   .card__face--front img {
-    width: 85%;
-    height: auto;
+    height: 100%;
     cursor: pointer;
   }
 
@@ -347,14 +332,11 @@ ul {
   .cards__grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .cards__nav {
     display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 20px;
 
     .cards__btn {

@@ -46,12 +46,10 @@ function App() {
           <header className='header'> 
             <LogoutButton handleLogout={handleLogout}/>
             <h1 className='header__title'>English - German Vocabulary</h1>
-            <div className='home'>
-            <p>
+            <div className='greeting'>
               Click on <strong>List</strong> in order to add, update or delete
-              vocabularies.
+              vocabularies.<br />
               Click on <strong>Cards</strong> to test you vocabulary.
-            </p>
           </div>
             <ul className='header__nav'>
               <NavLink exact={true} className='header__nav-link' to='/'>
@@ -63,12 +61,12 @@ function App() {
             </ul>
           </header>
 
-          <div>
+          <main role='main'>
             <Switch>
               <Route exact path='/' component={DocList} />
               <Route path='/cards' component={CardGroups} />
             </Switch>
-          </div>
+          </main>
         </div>
       </Router>
     ): (
