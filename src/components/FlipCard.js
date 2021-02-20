@@ -35,7 +35,7 @@ const FlipCard = ({ card , number}) => {
               rate={0.8}
             />
             {card.translatedText}
-            {card.synonym != '' ? 
+            {card.synonym !== '' ? 
             <div className='synonym'> <em>Synonym:</em><br />
               {card.synonym}
             </div>
