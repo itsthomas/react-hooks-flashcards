@@ -190,6 +190,10 @@ ul {
       justify-content: center;
       align-items: center;
 
+      @media only screen and (min-width: 375px) {
+        min-width: 93px;
+      }
+
       &.selected {
         background-color: #68b6fb;
         border: 1px solid #022646;
