@@ -506,14 +506,14 @@
 }
 
 .login .loginContainer {
-  padding: 60px;
-  margin: auto;
-  width: 100%;
-  max-width: 520px;
-  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  max-width: 520px;
+  min-height: 600px;
+  margin: 0 20px;
+  padding: 60px;
   background: radial-gradient(
     ellipse at left bottom,
     rgba(22, 24, 47, 1) 0%,
