@@ -133,6 +133,7 @@ ul {
   .list__textarea-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
     width: 39%;
     background-color: #fff;
@@ -184,8 +185,9 @@ ul {
 
     &__set {
       display: flex;
-      min-width: 78px;
+      min-width: 75px;
       padding: 10px;
+      margin: 2px;
       border: 1px solid #000;
       cursor: pointer;
       justify-content: center;
@@ -193,7 +195,7 @@ ul {
 
       &.selected {
         background-color: #68b6fb;
-        border: 1px solid #68b6fb;
+        border: 1px solid #022646;
         color: white;
         font-weight: 600;
       }
