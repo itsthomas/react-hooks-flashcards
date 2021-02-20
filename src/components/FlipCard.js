@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import TextToSpeech from './TextToSpeech';
 
 const FlipCard = ({ card , number}) => {
-  // const card = props.card;
   const [back, setBack] = useState(false);
-
   const backLang = card.imgURL ? 'en-GB' : 'de-DE';
 
   return (
@@ -37,6 +35,13 @@ const FlipCard = ({ card , number}) => {
               rate={0.7}
             />
             {card.translatedText}
+            {card.synonym != '' ? 
+            <div className='synonym'> <em>Synonym:</em><br />
+              {card.synonym}
+            </div>
+            :
+              ''
+            }
           </div>
         </div>
       </div>

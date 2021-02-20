@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import FlipCard from './FlipCard';
-//import timeOutScroll from '../helpers/timeOutScroll';
 
 const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowFlipCardSwipe, goThroughAllCards, setStartPoint}) => {
   const [card, setCard] = useState({});
@@ -21,10 +20,8 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
         //Show FlipCardSwipe
         setShowFlipCardSwipe(true);
       } else {
-
          //Hide FlipCardSwipe
          setShowFlipCardSwipe(false);
-
       }
         
     };
@@ -67,12 +64,9 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
         setCardNumber(startPoint + 1);
    
       }
-      
-
     };
 
     fetchNextData();
-
   };
 
 
@@ -80,12 +74,11 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
     setFinished(false);
     setStartPoint(-1);
 
-    if(goThroughAllCards){
-
+    if(goThroughAllCards) {
       setShowCardGroups(false);
       setShowFlipCardSwipe(true);
       showNext({ card: {id:null} });
-    }else {
+    } else {
       setShowCardGroups(true);
       setShowFlipCardSwipe(false);
     }
