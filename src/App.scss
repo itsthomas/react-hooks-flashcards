@@ -39,6 +39,7 @@ ul {
     &__nav {
       display: flex;
       width: 100%;
+      max-width: 600px;
       margin: 0;
 
       &-link {
@@ -337,6 +338,7 @@ ul {
 
   .cards__nav {
     display: flex;
+    justify-content: center;
     margin-bottom: 20px;
 
     .cards__btn {
