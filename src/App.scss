@@ -71,6 +71,7 @@ ul {
 
   li.list__item {
     display: flex;
+    height: 90px;
     position: relative;
     justify-content: flex-start;
     margin-bottom: 5px;
@@ -133,16 +134,15 @@ ul {
   .list__textarea-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
     width: 39%;
     background-color: #fff;
     border-left: 1px solid;
 
     img {
-      max-width: 100px;
-      height: auto;
+      height: 100%;
       border-radius: 10px;
+      margin: 0 auto;
     }
 
     .list__textarea {
@@ -313,7 +313,8 @@ ul {
   }
 
   .card__face--front img {
-    height: 100%;
+    max-width: 270px;
+    max-height: 100%;
     cursor: pointer;
   }
 
