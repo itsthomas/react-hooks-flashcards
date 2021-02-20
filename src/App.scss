@@ -178,24 +178,22 @@ ul {
 
   .nav {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 20px;
 
     &__set {
       display: flex;
-      min-width: 60px;
+      min-width: 78px;
       padding: 10px;
-      border: 1px solid;
+      border: 1px solid #000;
       cursor: pointer;
-      text-align: center;
       justify-content: center;
       align-items: center;
 
       &.selected {
         background-color: #68b6fb;
+        border: 1px solid #68b6fb;
         color: white;
         font-weight: 600;
       }
