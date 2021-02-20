@@ -332,7 +332,7 @@ ul {
   .cards__grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   .cards__nav {
