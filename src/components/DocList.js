@@ -16,9 +16,8 @@ const DocList = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-          // FlashCards is the namee of our collection on FireBase server
+          // FlashCards is the name of our collection on FireBase server
           // .get all data from our FireBase collection and save them in to const data
-
           let flashCards = db.collection('FlashCards');
 
           // if (searchQuery !== "") {
