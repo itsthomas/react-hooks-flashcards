@@ -3,7 +3,7 @@ import FlipCard from './FlipCard';
 
 const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowFlipCardSwipe, goThroughAllCards, setStartPoint}) => {
   const [card, setCard] = useState({});
-  const [finished, setFinished] = useState(false);
+  const [complete, setcomplete] = useState(false);
   const [cardNumber, setCardNumber] = useState(startPoint+1);
   // console.log(cards);
 
@@ -37,12 +37,12 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
     const fetchNextData = () => {
       if(card.id !== null) {
       
-        // If there are no more data in the document, setFinished to true
+        // If there are no more data in the document, setcomplete to true
         // This will hide the next button and shows "Start again" button instead
   
         if (card.cardsArrayIndex + 2 === endPoint) {
           console.log('end of the row');
-          setFinished(true);
+          setcomplete(true);
         }
   
         // Save firebase db data in cards using the setCards method
@@ -51,12 +51,12 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
 
       } else {
 
-        // If there are no more data in the document, setFinished to true
+        // If there are no more data in the document, setcomplete to true
         // This will hide the next button and shows "Start again" button instead
 
         if (card.cardsArrayIndex+2 === endPoint) {
           console.log('end of the row');
-          setFinished(true);
+          setcomplete(true);
         }
   
         // Save firebase db data in cards using the setCards method
@@ -71,7 +71,7 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
 
 
   const startAgain = () => {
-    setFinished(false);
+    setcomplete(false);
     setStartPoint(-1);
 
     if(goThroughAllCards) {
@@ -88,24 +88,22 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
 
   return (
     <>
-      <div className={finished ? 'scene hidden' : 'scene visible'}>
+      <div className={complete ? 'scene hidden' : 'scene visible'}>
         {
           <FlipCard number={cardNumber} key={card.id} card={card}/>
        }
       </div>
-      {finished ? (
+      {complete ? (
         <div
           className={
-            finished
+            complete
               ? 'card__btn-wrapper note visible'
               : 'card__btn-wrapper note hidden'
           }
         >
-          <h3>Finished!</h3>
-          <span className='success'>Congratulation!</span>
-          <p>That was the last card. You went through all cards.</p>
+          <h3>Completed!</h3>
           <button className='card__btn' onClick={startAgain}>
-            Start again!
+            Show Overview
           </button>
         </div>
       ) : (
