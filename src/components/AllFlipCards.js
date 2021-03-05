@@ -1,4 +1,3 @@
-import React from 'react';
 import FlipCard from './FlipCard';
 
 const AllFlipCards = ({cards}) => {

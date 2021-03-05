@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TextToSpeech from './TextToSpeech';
 
 const FlipCard = ({ card , number}) => {

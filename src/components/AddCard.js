@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { db, firebase } from '../firebase';
 import ImageUpload from './ImageUpload';
 

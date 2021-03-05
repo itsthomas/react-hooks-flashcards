@@ -1,4 +1,3 @@
-import React from 'react';
 import { db } from '../firebase';
 // Importing SweetAlert2-react
 import Swal from 'sweetalert2';

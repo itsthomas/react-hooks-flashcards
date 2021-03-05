@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Destructuring
 const TextToSpeech = ({ message, language, rate, pitch }) => {
   return (

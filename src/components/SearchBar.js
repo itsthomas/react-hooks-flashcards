@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SearchBar = ({handleSearchInput}) => {
 
   const handleChange = (e)  => {

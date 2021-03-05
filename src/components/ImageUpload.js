@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { storage } from '../firebase';
 
 const ImageUpload = ({ getURLtoParent, counter, setcounter }) => {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ListenButton = (props) => {
   const message = props.message;
   const language = props.language;

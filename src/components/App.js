@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -40,7 +40,7 @@ function App() {
 
 
   return (
-     (user !== '' ? (
+     user !== '' ? (
       <Router>
         <div className='App'>
           <header className='header'> 
@@ -71,9 +71,9 @@ function App() {
       </Router>
     ): (
       <Auth onceUserUpdated={onceUserUpdated} />
-    ) )
-    
-  );
+    )
+  )
+
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FlipCard from './FlipCard';
 
 const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowFlipCardSwipe, goThroughAllCards, setStartPoint}) => {
@@ -82,7 +82,6 @@ const FlipCardSwipe = ({cards, startPoint, endPoint, setShowCardGroups, setShowF
       setShowCardGroups(true);
       setShowFlipCardSwipe(false);
     }
-
 
   }
 
